@@ -60,7 +60,7 @@ const produtos = reactive([
 @import "../styles/variables.scss";
 
 main {
-  padding: 0 var(--default-padding);
+  padding: 0 var(--default-padding) 4rem;
 }
 
 .main__header {
