@@ -1,14 +1,15 @@
 <script setup>
-import IconCart from "./icons/IconCart.vue";
+import { RouterLink } from "vue-router";
 </script>
 
 <template>
   <header>
     <nav>
       <h1>EasyBurger</h1>
-      <div class="cart-container">
-        <IconCart />
-      </div>
+
+      <router-link to="/carrinho" class="cart-container material-icons">
+        shopping_cart
+      </router-link>
     </nav>
   </header>
 </template>
@@ -20,7 +21,7 @@ nav {
   justify-content: space-between;
 
   margin-bottom: 3rem;
-  padding: 20px var(--default-padding);
+  padding: 1rem var(--default-padding);
   border-bottom: 1px solid lightgray;
 }
 
@@ -28,11 +29,14 @@ nav {
   display: grid;
   place-content: center;
 
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   padding: 2px;
+  color: #000;
   cursor: pointer;
+  font-size: 2rem;
   border-radius: 50%;
+  text-decoration: none;
   border: 1px solid gray;
 }
 </style>

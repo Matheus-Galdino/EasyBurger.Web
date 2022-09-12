@@ -1,6 +1,4 @@
 <script setup>
-import IconStar from "./icons/IconStar.vue";
-
 defineProps({
   produto: {
     type: Object,
@@ -18,7 +16,7 @@ defineProps({
       <p class="produto-preco">R$ {{ produto.preco }}</p>
 
       <p class="produto-avaliacao">
-        <IconStar />
+        <span class="material-icons"> star </span>
         {{ produto.avaliacao }}
       </p>
     </div>
