@@ -1,5 +1,9 @@
 <script setup>
 import { RouterLink } from "vue-router";
+
+import { useCartStore } from "../stores/cart";
+
+const cartStore = useCartStore();
 </script>
 
 <template>
@@ -7,7 +11,7 @@ import { RouterLink } from "vue-router";
     <nav>
       <router-link to="/">EasyBurger</router-link>
 
-      <router-link to="/carrinho" class="cart-container material-icons">
+      <router-link to="/carrinho" class="cart-container material-icons" :data-count="cartStore.productsCount">
         shopping_cart
       </router-link>
     </nav>
@@ -21,7 +25,7 @@ nav {
   justify-content: space-between;
 
   margin-bottom: 3rem;
-  padding: 1rem var(--default-padding);
+  padding: 1.5rem var(--default-padding);
   border-bottom: 1px solid lightgray;
 
   a {
@@ -36,8 +40,10 @@ nav {
   display: grid;
   place-content: center;
 
-  width: 3rem;
-  height: 3rem;
+  position: relative;
+
+  width: 3.5rem;
+  height: 3.5rem;
   padding: 2px;
   color: #000;
   cursor: pointer;
@@ -45,5 +51,23 @@ nav {
   border-radius: 50%;
   text-decoration: none;
   border: 1px solid gray;
+
+  &::before {
+    content: attr(data-count);
+    top: 0;
+    right: 0;
+    position: absolute;
+
+    padding: 0.5rem;
+
+    color: #fff;
+    font-size: 1.2rem;
+    pointer-events: none;
+    background: #f06449;
+    border-radius: 1.3rem;
+    transform: translate(30%, -50%);
+
+    font-family: "Montserrat", sans-serif;
+  }
 }
 </style>
