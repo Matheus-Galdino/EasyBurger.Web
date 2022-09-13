@@ -11,7 +11,7 @@ const filteredProducts = computed(() => {
   if (searchText === "")
     return productStore.products;
 
-  return productStore.products.filter(x => x.name.toLower().contains(searchText));
+  return productStore.products.filter(x => x.name.toLowerCase().contains(searchText));
 })
 </script>
 
