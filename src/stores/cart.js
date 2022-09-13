@@ -24,7 +24,9 @@ export const useCartStore = defineStore({
     decreaseQuantity(productId) {
       const productIndex = this.products.findIndex((x) => x.product.id == productId);
 
-      if (this.products[productIndex].quantity-- == 0) this.products.splice(productIndex, 1);
+      this.products[productIndex].quantity--;
+
+      if (this.products[productIndex] == 0) this.products.splice(productIndex, 1);
     },
   },
 });
