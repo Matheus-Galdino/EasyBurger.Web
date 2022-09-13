@@ -1,15 +1,24 @@
 <script setup>
+import { reactive, computed } from "vue";
 import { useProductStore } from "../stores/product";
 
 import CardapioItem from "../components/CardapioItem.vue";
 
+const searchText = reactive("");
 const productStore = useProductStore();
+
+const filteredProducts = computed(() => {
+  if (searchText === "")
+    return productStore.products;
+
+  return productStore.products.filter(x => x.name.toLower().contains(searchText));
+})
 </script>
 
 <template>
   <main>
     <section class="main__header">
-      <input type="search" placeholder="Pesquise o nome de um produto" />
+      <input type="search" placeholder="Pesquise o nome de um produto" v-model="searchText" />
 
       <select>
         <option value="1" selected>Ordenar por nome</option>
@@ -20,7 +29,7 @@ const productStore = useProductStore();
     </section>
 
     <ul class="lista-produtos">
-      <CardapioItem v-for="produto in productStore.products" :key="produto.id" :produto="produto" />
+      <CardapioItem v-for="produto in filteredProducts" :key="produto.id" :produto="produto" />
     </ul>
   </main>
 </template>
