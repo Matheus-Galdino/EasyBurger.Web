@@ -1,57 +1,26 @@
 <script setup>
-import { reactive } from "vue";
+import { useProductStore } from "../stores/product";
+
 import CardapioItem from "../components/CardapioItem.vue";
 
-const produtos = reactive([
-  {
-    id: 1,
-    nome: "Galaxy",
-    preco: 33.6,
-    avaliacao: 4.76,
-    descricao: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos aliquam
-                    laboriosam repudiandae doloremque est dolores exercitationem laborum vel accusamus. Quae quibusdam,
-                    voluptate cumque enim maxime pariatur nemo fugiat unde harum!`,
-  },
-  {
-    id: 2,
-    nome: "Galaxy",
-    preco: 33.6,
-    avaliacao: 4.76,
-    descricao: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos aliquam
-                    laboriosam repudiandae doloremque est dolores exercitationem laborum vel accusamus. Quae quibusdam,
-                    voluptate cumque enim maxime pariatur nemo fugiat unde harum!`,
-  },
-  {
-    id: 3,
-    nome: "Galaxy",
-    preco: 33.6,
-    avaliacao: 4.76,
-    descricao: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos aliquam
-                    laboriosam repudiandae doloremque est dolores exercitationem laborum vel accusamus. Quae quibusdam,
-                    voluptate cumque enim maxime pariatur nemo fugiat unde harum!`,
-  },
-]);
+const productStore = useProductStore();
 </script>
 
 <template>
   <main>
     <section class="main__header">
-      <input type="text" placeholder="Pesquise o nome de um produto" />
+      <input type="search" placeholder="Pesquise o nome de um produto" />
 
       <select>
         <option value="1" selected>Ordenar por nome</option>
         <option value="2">Ordenar por preço</option>
-        <option value="4">Ordem por mais pedidos</option>
         <option value="3">Ordenar por melhor avaliados</option>
+        <option value="4">Ordem por mais pedidos</option>
       </select>
     </section>
 
     <ul class="lista-produtos">
-      <CardapioItem
-        v-for="produto in produtos"
-        :key="produto.id"
-        :produto="produto"
-      />
+      <CardapioItem v-for="produto in productStore.products" :key="produto.id" :produto="produto" />
     </ul>
   </main>
 </template>

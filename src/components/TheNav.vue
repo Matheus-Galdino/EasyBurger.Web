@@ -5,7 +5,7 @@ import { RouterLink } from "vue-router";
 <template>
   <header>
     <nav>
-      <h1>EasyBurger</h1>
+      <router-link to="/">EasyBurger</router-link>
 
       <router-link to="/carrinho" class="cart-container material-icons">
         shopping_cart
@@ -23,6 +23,13 @@ nav {
   margin-bottom: 3rem;
   padding: 1rem var(--default-padding);
   border-bottom: 1px solid lightgray;
+
+  a {
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+  }
 }
 
 .cart-container {

@@ -1,44 +1,24 @@
 <script setup>
-import { computed, reactive } from "vue";
+import { computed } from "vue";
 
+import { useCartStore } from "../stores/cart";
 import CarrinhoItem from "../components/CarrinhoItem.vue";
 
-const produtos = reactive([
-  {
-    nome: "Hard burger",
-    preco: 50,
-    quantidade: 2,
-  },
-  {
-    nome: "Insane burger",
-    preco: 100,
-    quantidade: 1,
-  },
-  {
-    nome: "Easy burger",
-    preco: 25.67,
-    quantidade: 2,
-  },
-]);
-
-const precoTotal = computed(() => {
-  const sum = produtos.reduce((prev, current) => prev + current.preco * current.quantidade, 0);
-
-  return sum;
-})
+const cartStore = useCartStore();
 </script>
 
 <template>
   <main>
     <section class="products-container">
       <ul class="products-list">
-        <carrinho-item v-for="(produto, index) in produtos" :produto="produto" :key="index" />
+        <carrinho-item v-for="({product, quantity}, index) in cartStore.products" :product="product"
+          :quantity="quantity" :key="index" />
       </ul>
 
       <footer class="total-container">
         <h3> Total </h3>
         <p>
-          <strong>R$ {{ precoTotal }}</strong>
+          <strong>R$ {{ cartStore.precoTotal }}</strong>
         </p>
 
         <button class="efetuar-pagamento">Efetuar pagamento</button>

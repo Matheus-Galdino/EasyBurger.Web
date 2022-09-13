@@ -1,29 +1,36 @@
 <script setup>
 import { computed } from 'vue';
+import { useCartStore } from '../stores/cart';
 
 const props = defineProps({
-  produto: {
+  product: {
     type: Object,
     required: true,
   },
+  quantity: {
+    type: Number,
+    required: true
+  }
 });
 
-const precoFormatado = computed(() => {
-  return props.produto.preco.toFixed(2);
+const formatedPrice = computed(() => {
+  return props.product.price.toFixed(2);
 })
+
+const cartStore = useCartStore();
 </script>
 
 <template>
   <li class="products-item">
     <img src="../assets/img-burger.webp" alt="hamburger" />
 
-    <p class="nome">{{ produto.nome }}</p>
-    <p class="price">R$ {{ precoFormatado }}</p>
+    <p class="nome">{{ product.name }}</p>
+    <p class="price">R$ {{ formatedPrice }}</p>
 
     <div class="input-container">
-      <button class="material-icons">remove</button>
-      <input type="text" :value="produto.quantidade" readonly />
-      <button class="material-icons">add</button>
+      <button class="material-icons" @click="cartStore.decreaseQuantity(product.id)">remove</button>
+      <input type="text" :value="quantity" readonly />
+      <button class="material-icons" @click="cartStore.increaseQuantity(product.id)">add</button>
     </div>
 
     <button class="material-icons remover">delete_outline</button>
