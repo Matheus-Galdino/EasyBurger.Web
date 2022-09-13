@@ -1,5 +1,6 @@
 <script setup>
 import { computed, reactive } from "vue";
+
 import CarrinhoItem from "../components/CarrinhoItem.vue";
 
 const produtos = reactive([
@@ -44,6 +45,7 @@ const precoTotal = computed(() => {
         <router-link to="/" class="btn cancel">Voltar</router-link>
       </footer>
     </section>
+
   </main>
 </template>
 
