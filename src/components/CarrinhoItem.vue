@@ -33,7 +33,7 @@ const cartStore = useCartStore();
       <button class="material-icons" @click="cartStore.increaseQuantity(product.id)">add</button>
     </div>
 
-    <button class="material-icons remover">delete_outline</button>
+    <button class="material-icons remover" @click="cartStore.removeFromCart(product.id)">delete_outline</button>
 
   </li>
 </template>

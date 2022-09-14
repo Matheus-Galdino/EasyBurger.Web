@@ -26,7 +26,12 @@ export const useCartStore = defineStore({
 
       this.products[productIndex].quantity--;
 
-      if (this.products[productIndex].quantity === 0) this.products.splice(productIndex, 1);
+      if (this.products[productIndex].quantity === 0) this.removeFromCart(productId);
     },
+    removeFromCart(productId){
+      const productIndex = this.products.findIndex((x) => x.product.id == productId);
+
+      this.products.splice(productIndex, 1);
+    }
   },
 });

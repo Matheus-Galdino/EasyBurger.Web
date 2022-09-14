@@ -5,6 +5,8 @@ import { useCartStore } from "../stores/cart";
 import CarrinhoItem from "../components/CarrinhoItem.vue";
 
 const cartStore = useCartStore();
+
+const hasItems = computed(() => cartStore.productsCount > 0);
 </script>
 
 <template>
@@ -15,7 +17,7 @@ const cartStore = useCartStore();
           :quantity="quantity" :key="index" />
       </ul>
 
-      <footer class="total-container">
+      <footer class="total-container" v-show="hasItems">
         <h3> Total </h3>
         <p>
           <strong>R$ {{ cartStore.precoTotal }}</strong>
@@ -23,6 +25,13 @@ const cartStore = useCartStore();
 
         <button class="efetuar-pagamento">Efetuar pagamento</button>
         <router-link to="/" class="btn cancel">Voltar</router-link>
+      </footer>
+
+      <footer class="empty-cart" v-show="!hasItems">
+        <img src="../assets/empty-cart.svg" alt="">
+        <p>O carrinho está vazio. <br> Tente adicionar algum produto</p>
+
+         <router-link class="btn" to="/">Ver cardápio</router-link>
       </footer>
     </section>
 
@@ -70,6 +79,26 @@ main {
   .cancel {
     width: min-content;
     background: #f06449;
+    text-decoration: none;
+  }
+}
+
+.empty-cart {
+  padding: 2rem;
+  text-align: center;
+
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+    max-width: 22rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    margin-top: 1.5rem;
     text-decoration: none;
   }
 }
