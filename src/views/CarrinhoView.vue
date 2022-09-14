@@ -20,7 +20,7 @@ const hasItems = computed(() => cartStore.productsCount > 0);
       <footer class="total-container" v-show="hasItems">
         <h3> Total </h3>
         <p>
-          <strong>R$ {{ cartStore.precoTotal }}</strong>
+          <strong>R$ {{ cartStore.precoTotal.toFixed(2) }}</strong>
         </p>
 
         <button class="efetuar-pagamento">Efetuar pagamento</button>

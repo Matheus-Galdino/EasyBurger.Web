@@ -29,7 +29,7 @@ const filteredProducts = computed(() => {
     </section>
 
     <ul class="lista-produtos">
-      <CardapioItem v-for="produto in filteredProducts" :key="produto.id" :produto="produto" />
+      <CardapioItem v-for="produto in filteredProducts" :key="produto.id" :product="produto" />
     </ul>
   </main>
 </template>
@@ -77,7 +77,7 @@ main {
   column-gap: 15px;
   align-items: center;
   justify-content: space-between;
-  grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
 
   list-style: none;
 }

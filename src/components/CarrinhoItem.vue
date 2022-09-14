@@ -13,19 +13,15 @@ const props = defineProps({
   }
 });
 
-const formatedPrice = computed(() => {
-  return props.product.price.toFixed(2);
-})
-
 const cartStore = useCartStore();
 </script>
 
 <template>
   <li class="products-item">
-    <img src="../assets/img-burger.webp" alt="hamburger" />
+    <img :src="product.img" alt="hamburger" />
 
     <p class="nome">{{ product.name }}</p>
-    <p class="price">R$ {{ formatedPrice }}</p>
+    <p class="price">R$ {{ product.price.toFixed(2) }}</p>
 
     <div class="input-container">
       <button class="material-icons" @click="cartStore.decreaseQuantity(product.id)">remove</button>
@@ -39,7 +35,7 @@ const cartStore = useCartStore();
 </template>
 
 <style lang="scss" scoped>
-$img-width: 10rem;
+$img-width: 11rem;
 
 .products-item {
   display: grid;
@@ -49,16 +45,17 @@ $img-width: 10rem;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: $img-width auto auto;
 
-  padding: 1rem;
+  padding: 1.5rem;
   border-bottom: 1px solid lightgray;
 
-  >img {
-    width: 100%;
+  img {
     max-width: $img-width;
+    aspect-ratio: 1;
+    object-fit: cover;
 
     grid-column: 1;
     grid-row: 1 / 3;
-    border-radius: 2rem;
+    border-radius: 1.2rem;
   }
 
   .nome,
@@ -129,12 +126,11 @@ $img-width: 10rem;
 .remover {
   grid-row: 2;
   grid-column: 3;
-  align-self: start;
-  justify-self: center;
+  place-self: start center;
 
-  font-size: 2rem;
   margin-top: 1rem;
-  padding: 1rem 2rem;
+  font-size: 2.2rem;
+  padding: 0.7rem 3rem;
   background: #f06449;
 }
 </style>

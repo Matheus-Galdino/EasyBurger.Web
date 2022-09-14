@@ -2,7 +2,7 @@
 import { useCartStore } from '../stores/cart';
 
 const props = defineProps({
-  produto: {
+  product: {
     type: Object,
     required: true,
   },
@@ -10,27 +10,27 @@ const props = defineProps({
 
 const cartStore = useCartStore();
 
-function addToCart(){
-  cartStore.addToCart(props.produto);
+function addToCart() {
+  cartStore.addToCart(props.product);
 }
 </script>
 
 <template>
-  <li class="produto">
-    <p class="produto-nome">{{ produto.name }}</p>
-    <img class="produto-img" src="../assets/img-burger.webp" alt="foto hamburger" />
+  <li class="product">
+    <p class="product-nome">{{ product.name }}</p>
+    <img class="product-img" :src="product.img" alt="foto lanche" />
 
     <div class="extra-info">
-      <p class="produto-preco">R$ {{ produto.price }}</p>
+      <p class="product-preco">R$ {{ product.price.toFixed(2) }}</p>
 
-      <p class="produto-avaliacao">
+      <p class="product-avaliacao">
         <span class="material-icons"> star </span>
-        {{ produto.rating }}
+        {{ product.rating }}
       </p>
     </div>
 
-    <p class="produto-descricao">
-      {{ produto.description }}
+    <p class="product-descricao">
+      {{ product.description }}
     </p>
 
     <button class="btn" @click="addToCart">Adicionar</button>
@@ -38,8 +38,8 @@ function addToCart(){
 </template>
 
 <style lang="scss" scoepd>
-.produto {
-  padding: 15px;
+.product {
+  padding: 2rem;
   text-align: center;
   background: #fff;
   border-radius: 2rem;
@@ -52,8 +52,8 @@ function addToCart(){
   }
 
   &-img {
-    width: 100%;
-    max-width: 25rem;
+    max-width: 23rem;
+    aspect-ratio: 1;
     object-fit: cover;
     border-radius: 2rem;
   }
@@ -85,8 +85,8 @@ function addToCart(){
   }
 
   &-descricao {
-    font-size: 14px;
-    margin: 15px 0 10px;
+    font-size: 1.4rem;
+    margin: 1.5rem 0 1rem;
 
     overflow: hidden;
     display: -webkit-box;
