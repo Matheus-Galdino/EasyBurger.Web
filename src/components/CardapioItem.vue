@@ -42,7 +42,7 @@ function addToCart(){
   padding: 15px;
   text-align: center;
   background: #fff;
-  border-radius: 30px;
+  border-radius: 2rem;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
 
   &-nome {
@@ -53,7 +53,7 @@ function addToCart(){
 
   &-img {
     width: 100%;
-    max-height: 20rem;
+    max-width: 25rem;
     object-fit: cover;
     border-radius: 2rem;
   }
@@ -92,6 +92,11 @@ function addToCart(){
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+  }
+
+  .btn {
+    margin-top: 1rem;
+    padding-inline: 3rem;
   }
 }
 </style>

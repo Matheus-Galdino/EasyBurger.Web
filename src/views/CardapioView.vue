@@ -4,21 +4,21 @@ import { useProductStore } from "../stores/product";
 
 import CardapioItem from "../components/CardapioItem.vue";
 
-const searchText = reactive("");
+const state = reactive({ searchText: "" });
 const productStore = useProductStore();
 
 const filteredProducts = computed(() => {
-  if (searchText === "")
+  if (state.searchText === "")
     return productStore.products;
 
-  return productStore.products.filter(x => x.name.toLowerCase().contains(searchText));
+  return productStore.products.filter(x => x.name.toLowerCase().includes(state.searchText));
 })
 </script>
 
 <template>
   <main>
     <section class="main__header">
-      <input type="search" placeholder="Pesquise o nome de um produto" v-model="searchText" />
+      <input type="search" placeholder="Pesquise o nome de um produto" v-model="state.searchText" />
 
       <select>
         <option value="1" selected>Ordenar por nome</option>
@@ -51,8 +51,8 @@ main {
   margin-bottom: 3rem;
 
   input {
+    padding: 1.8rem;
     font-size: 1.4rem;
-    padding: 2rem 2.5rem;
     width: max(500px, 100%);
 
     border: none;
@@ -73,13 +73,12 @@ main {
 
 .lista-produtos {
   display: grid;
-  row-gap: 30px;
+  row-gap: 3rem;
   column-gap: 15px;
   align-items: center;
   justify-content: space-between;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
 
-  height: 100%;
   list-style: none;
 }
 </style>
