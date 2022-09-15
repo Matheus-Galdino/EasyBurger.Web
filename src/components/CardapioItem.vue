@@ -1,5 +1,6 @@
 <script setup>
 import { useCartStore } from '../stores/cart';
+import { useMainStore } from '../stores/main';
 
 const props = defineProps({
   product: {
@@ -9,9 +10,15 @@ const props = defineProps({
 });
 
 const cartStore = useCartStore();
+const mainStore = useMainStore();
 
 function addToCart() {
   cartStore.addToCart(props.product);
+
+  mainStore.addToast({
+    type: "success",
+    message: `${props.product.name} adicionado!`
+  })
 }
 </script>
 
