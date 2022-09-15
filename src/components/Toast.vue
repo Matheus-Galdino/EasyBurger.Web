@@ -14,7 +14,7 @@ const mainStore = useMainStore();
 onMounted(() => {
     setTimeout(() => {
         mainStore.clearToast(props.toast.message);
-    }, 2500);
+    }, 300);
 })
 </script>
 
@@ -22,7 +22,7 @@ onMounted(() => {
     <li :class="['toast', { 'success': toast.type === 'success' }]">
         <span class="material-icons"> {{ toast.type === "success" ? "check_circle" : "cancel" }} </span>
         <p class="content">{{ toast.message }}</p>
-        <button class="btn dismiss outlined">x</button>
+        <button class="btn dismiss outlined" @click="mainStore.clearToast(toast.message)">x</button>
     </li>
 </template>
 
