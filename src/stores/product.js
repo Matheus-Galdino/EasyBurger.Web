@@ -49,7 +49,7 @@ export const useProductStore = defineStore({
         price: 32.00,
         rating: 4,
         img: "https://static-images.ifood.com.br/image/upload/t_medium/pratos/a9399dc5-5f22-454a-8895-16c154511760/202111021436_0G0V_i.jpg",
-        description: "Em homenagem ao nosso novo projeto na rua relíquia casa verde. Smash de 120g de carne angus, queijo gorgonzola, bacon, geleia de tomate e maionese da casa."
+        description: "Smash de 120g de carne angus, queijo gorgonzola, bacon, geleia de tomate e maionese da casa."
       }
     ],
   }),
