@@ -35,7 +35,7 @@ const cartStore = useCartStore();
 </template>
 
 <style lang="scss" scoped>
-$img-width: 11rem;
+$img-width: 10rem;
 
 .products-item {
   display: grid;
@@ -45,7 +45,8 @@ $img-width: 11rem;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: $img-width auto auto;
 
-  padding: 1.5rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
   border-bottom: 1px solid lightgray;
 
   img {

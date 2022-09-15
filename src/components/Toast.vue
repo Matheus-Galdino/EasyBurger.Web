@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from '@vue/reactivity';
 import { onMounted } from 'vue';
 import { useMainStore } from '../stores/main';
 
@@ -10,6 +11,7 @@ const props = defineProps({
 })
 
 const mainStore = useMainStore();
+const toastIcon = computed(() => props.toast.type === "success" ? "check_circle" : "cancel");
 
 onMounted(() => {
     setTimeout(() => {
@@ -19,8 +21,8 @@ onMounted(() => {
 </script>
 
 <template>
-    <li :class="['toast', { 'success': toast.type === 'success' }]">
-        <span class="material-icons"> {{ toast.type === "success" ? "check_circle" : "cancel" }} </span>
+    <li :class="['toast', toast.type]">
+        <span class="material-icons"> {{ toastIcon }} </span>
         <p class="content">{{ toast.message }}</p>
         <button class="btn dismiss outlined" @click="mainStore.clearToast(toast.message)">x</button>
     </li>

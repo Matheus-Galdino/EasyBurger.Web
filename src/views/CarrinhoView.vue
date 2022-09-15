@@ -45,6 +45,7 @@ main {
 }
 
 .products-container {
+  padding: 1rem;
   border-radius: 1.5rem;
   width: min(100%, 600px);
   box-shadow: var(--box-shadow);
@@ -57,7 +58,8 @@ main {
 .total-container {
   font-size: 1.5rem;
   text-align: center;
-  padding-block: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1.5rem;
 
   h3 {
     font-size: 1.8rem;
