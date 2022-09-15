@@ -29,8 +29,9 @@ onMounted(() => {
 <style lang="scss" scoped>
 .toast {
     display: flex;
-    column-gap: 1rem;
+    column-gap: 2rem;
     align-items: center;
+    justify-self: end;
 
     padding: 1rem;
     border-radius: 2rem;

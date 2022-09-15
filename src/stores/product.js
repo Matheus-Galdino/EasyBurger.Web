@@ -43,7 +43,8 @@ export const useProductStore = defineStore({
         rating: 4.6,
         img: "https://static-images.ifood.com.br/image/upload/t_medium/pratos/a9399dc5-5f22-454a-8895-16c154511760/202004282006_lkS3_b.jpg",
         description: "Dois hambúrgueres 120 gr de angus, vinagrete de chimichurri, alface no pão brioche."
-      },{
+      },
+      {
         id: 6,
         name: "Relíquia",
         price: 32.00,
