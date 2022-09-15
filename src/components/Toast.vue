@@ -14,7 +14,7 @@ const mainStore = useMainStore();
 onMounted(() => {
     setTimeout(() => {
         mainStore.clearToast(props.toast.message);
-    }, 300);
+    }, 3000);
 })
 </script>
 
