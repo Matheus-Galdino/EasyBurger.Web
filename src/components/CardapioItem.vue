@@ -59,7 +59,7 @@ function addToCart() {
   }
 
   &-img {
-    max-width: 23rem;
+    max-width: 19rem;
     aspect-ratio: 1;
     object-fit: cover;
     border-radius: 2rem;
@@ -67,7 +67,7 @@ function addToCart() {
 
   .extra-info {
     display: flex;
-    column-gap: 40px;
+    column-gap: 2rem;
     align-items: center;
     justify-content: center;
 
