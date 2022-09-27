@@ -1,9 +1,11 @@
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 
 import { useCartStore } from "../stores/cart";
 import CarrinhoItem from "../components/CarrinhoItem.vue";
+import PaymentModal from "../components/PaymentModal.vue";
 
+const isPaying = ref(false);
 const cartStore = useCartStore();
 
 const hasItems = computed(() => cartStore.productsCount > 0);
@@ -23,7 +25,9 @@ const hasItems = computed(() => cartStore.productsCount > 0);
           <strong>R$ {{ cartStore.precoTotal.toFixed(2) }}</strong>
         </p>
 
-        <button class="efetuar-pagamento">Efetuar pagamento</button>
+        <button class="efetuar-pagamento" @click="isPaying = !isPaying">
+          Efetuar pagamento
+        </button>
         <router-link to="/" class="btn cancel">Voltar</router-link>
       </footer>
 
@@ -31,9 +35,13 @@ const hasItems = computed(() => cartStore.productsCount > 0);
         <img src="../assets/empty-cart.svg" alt="">
         <p>O carrinho está vazio. <br> Tente adicionar algum produto</p>
 
-         <router-link class="btn" to="/">Ver cardápio</router-link>
+        <router-link class="btn" to="/">Ver cardápio</router-link>
       </footer>
     </section>
+
+    <teleport to="#mask" :disabled="!isPaying">
+      <payment-modal v-show="isPaying" @cancel="isPaying = !isPaying" />
+    </teleport>
 
   </main>
 </template>
