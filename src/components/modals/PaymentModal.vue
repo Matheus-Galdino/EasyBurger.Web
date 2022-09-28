@@ -1,11 +1,12 @@
 <script setup>
 import { defineEmits } from "vue";
 
-const emit = defineEmits(["payment-successful", "payment-cashier", "cancel"])
+const emit = defineEmits(["payment-successful", "payment-cashier", "close"])
 
 function simulateExternalPayment() {
     alert("Pagamento efetuado!!!");
     emit("payment-successful");
+    emit("close");
 }
 </script>
 
@@ -19,11 +20,11 @@ function simulateExternalPayment() {
             <span class="material-icons"> credit_card </span>
             Cartão
         </button>
-        <button class="option cashier">
+        <button class="option cashier" @click="$emit('payment-cashier')">
             <span class="material-icons"> account_balance_wallet </span>
             Pagar no caixa
         </button>
-        <button class="option close" @click="$emit('cancel')">
+        <button class="option close" @click="$emit('close')">
             <span class="material-icons"> close </span>
             Voltar
         </button>

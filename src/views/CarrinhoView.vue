@@ -3,12 +3,30 @@ import { computed, ref } from "vue";
 
 import { useOrderStore } from "../stores/orders";
 import CarrinhoItem from "../components/CarrinhoItem.vue";
-import PaymentModal from "../components/PaymentModal.vue";
+import PaymentModal from "../components/modals/PaymentModal.vue";
+import CashierOrderModal from "../components/modals/CashierOrderModal.vue";
 
 const isPaying = ref(false);
+const isPayingInCashier = ref(false);
 const orderStore = useOrderStore();
+const orderId = ref(makeId(5))
 
 const hasItems = computed(() => orderStore.productsCount > 0);
+
+function showOrderId() {
+  isPaying.value = false;
+  isPayingInCashier.value = true;
+}
+
+function makeId(length) {
+  var result = '';
+  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
 </script>
 
 <template>
@@ -40,7 +58,11 @@ const hasItems = computed(() => orderStore.productsCount > 0);
     </section>
 
     <teleport to="#mask" :disabled="!isPaying">
-      <payment-modal v-show="isPaying" @cancel="isPaying = !isPaying" />
+      <payment-modal v-show="isPaying" @payment-cashier="showOrderId" @close="isPaying = false" />
+    </teleport>
+
+    <teleport to="#mask" :disabled="!isPayingInCashier">
+      <cashier-order-modal v-show="isPayingInCashier" @close="isPayingInCashier = false" :order-code="orderId" />
     </teleport>
 
   </main>

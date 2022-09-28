@@ -8,7 +8,6 @@ export const useMainStore = defineStore({
   actions: {
     addToast(toast) {
       this.toasts.push(toast);
-      console.table(this.toasts);
     },
     clearToast(message) {
       const index = this.toasts.findIndex((x) => x.message === message);
