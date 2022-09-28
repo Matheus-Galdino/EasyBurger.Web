@@ -1,9 +1,9 @@
 <script setup>
 import { RouterLink } from "vue-router";
 
-import { useCartStore } from "../stores/cart";
+import { useOrderStore } from "../stores/orders";
 
-const cartStore = useCartStore();
+const orderStore = useOrderStore();
 </script>
 
 <template>
@@ -11,7 +11,7 @@ const cartStore = useCartStore();
     <nav>
       <router-link to="/">EasyBurger</router-link>
 
-      <router-link to="/carrinho" class="cart-container material-icons" :data-count="cartStore.productsCount">
+      <router-link to="/carrinho" class="cart-container material-icons" :data-count="orderStore.productsCount">
         shopping_cart
       </router-link>
     </nav>

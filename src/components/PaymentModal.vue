@@ -1,11 +1,11 @@
 <script setup>
 import { defineEmits } from "vue";
 
-const emit = defineEmits(["payment-requested", "payment-cashier", "cancel"])
+const emit = defineEmits(["payment-successful", "payment-cashier", "cancel"])
 
 function simulateExternalPayment() {
-    alert("Você será redirecionado para a tela de pagemento agora!!!");
-    emit("payment-requested");
+    alert("Pagamento efetuado!!!");
+    emit("payment-successful");
 }
 </script>
 

@@ -1,6 +1,6 @@
 <script setup>
-import { useCartStore } from '../stores/cart';
-import { useMainStore } from '../stores/main';
+  import { useMainStore } from '../stores/main';
+  import { useOrderStore } from '../stores/orders';
 
 const props = defineProps({
   product: {
@@ -9,11 +9,11 @@ const props = defineProps({
   },
 });
 
-const cartStore = useCartStore();
 const mainStore = useMainStore();
+const orderStore = useOrderStore();
 
 function addToCart() {
-  cartStore.addToCart(props.product);
+  orderStore.addToCart(props.product);
 
   mainStore.addToast({
     type: "success",

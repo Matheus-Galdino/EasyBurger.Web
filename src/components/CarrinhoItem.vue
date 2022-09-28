@@ -1,6 +1,5 @@
 <script setup>
-import { computed } from 'vue';
-import { useCartStore } from '../stores/cart';
+import { useOrderStore } from '../stores/orders';
 
 const props = defineProps({
   product: {
@@ -13,7 +12,7 @@ const props = defineProps({
   }
 });
 
-const cartStore = useCartStore();
+const orderStore = useOrderStore();
 </script>
 
 <template>
@@ -24,12 +23,12 @@ const cartStore = useCartStore();
     <p class="price">R$ {{ product.price.toFixed(2) }}</p>
 
     <div class="input-container">
-      <button class="material-icons" @click="cartStore.decreaseQuantity(product.id)">remove</button>
+      <button class="material-icons" @click="orderStore.decreaseQuantity(product.id)">remove</button>
       <input type="text" :value="quantity" readonly />
-      <button class="material-icons" @click="cartStore.increaseQuantity(product.id)">add</button>
+      <button class="material-icons" @click="orderStore.increaseQuantity(product.id)">add</button>
     </div>
 
-    <button class="material-icons remover" @click="cartStore.removeFromCart(product.id)">delete_outline</button>
+    <button class="material-icons remover" @click="orderStore.removeFromCart(product.id)">delete_outline</button>
 
   </li>
 </template>

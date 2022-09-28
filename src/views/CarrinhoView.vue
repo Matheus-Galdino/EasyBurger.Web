@@ -1,28 +1,28 @@
 <script setup>
 import { computed, ref } from "vue";
 
-import { useCartStore } from "../stores/cart";
+import { useOrderStore } from "../stores/orders";
 import CarrinhoItem from "../components/CarrinhoItem.vue";
 import PaymentModal from "../components/PaymentModal.vue";
 
 const isPaying = ref(false);
-const cartStore = useCartStore();
+const orderStore = useOrderStore();
 
-const hasItems = computed(() => cartStore.productsCount > 0);
+const hasItems = computed(() => orderStore.productsCount > 0);
 </script>
 
 <template>
   <main>
     <section class="products-container">
       <ul class="products-list">
-        <carrinho-item v-for="({product, quantity}, index) in cartStore.products" :product="product"
+        <carrinho-item v-for="({product, quantity}, index) in orderStore.cartProducts" :product="product"
           :quantity="quantity" :key="index" />
       </ul>
 
       <footer class="total-container" v-show="hasItems">
         <h3> Total </h3>
         <p>
-          <strong>R$ {{ cartStore.precoTotal.toFixed(2) }}</strong>
+          <strong>R$ {{ orderStore.precoTotal.toFixed(2) }}</strong>
         </p>
 
         <button class="efetuar-pagamento" @click="isPaying = !isPaying">
